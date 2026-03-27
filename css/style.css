@@ -221,8 +221,13 @@ section h2 {
   transition: background .2s;
 }
 .c-btn:hover { background: #d966a080; }
-.c-btn.prev { left: -22px; }
-.c-btn.next { right: -22px; }
+.c-btn.prev { left: -18px; }
+.c-btn.next { right: -18px; }
+
+@media (max-width: 780px) {
+  .c-btn.prev { left: 8px; }
+  .c-btn.next { right: 8px; }
+}
 
 .dots {
   display: flex;
@@ -242,7 +247,7 @@ section h2 {
 
 /* ── CARTA DE AMOR ── */
 .envelope-wrap {
-  perspective: 1200px;
+  width: 100%;
 }
 
 .envelope-card {
@@ -251,13 +256,6 @@ section h2 {
   max-width: 460px;
   min-height: 300px;
   margin: 0 auto;
-  cursor: pointer;
-  transform-style: preserve-3d;
-  transition: transform .9s ease;
-}
-
-.envelope-card.open {
-  transform: rotateY(180deg);
 }
 
 .env-front,
@@ -267,8 +265,7 @@ section h2 {
   border-radius: 20px;
   border: 1px solid #5a1a40;
   padding: 2.5rem 2rem;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  transition: opacity .7s ease;
 }
 
 .env-front {
@@ -279,6 +276,14 @@ section h2 {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  opacity: 1;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.envelope-card.open .env-front {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .env-icon {
@@ -303,11 +308,16 @@ section h2 {
 
 .env-back {
   background: #fdf0f5;
-  transform: rotateY(180deg);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: .7rem;
+  opacity: 0;
+  z-index: 1;
+}
+
+.envelope-card.open .env-back {
+  opacity: 1;
 }
 
 .letter-saludo {
@@ -417,6 +427,7 @@ section h2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: .8rem;
+  width: 100%;
 }
 
 .quiz-opt {
@@ -524,82 +535,157 @@ footer {
 
 /* ── MÓVIL (≤ 600px) ── */
 @media (max-width: 600px) {
+
+  /* ── BASE ── */
+  body { overflow-x: hidden; }
+
+  section {
+    padding: 2.8rem 1rem;
+    overflow-x: hidden;
+  }
+
+  section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1.6rem;
+  }
+
+  /* ── HERO ── */
   .hero {
-    padding: 1.5rem 1rem;
+    padding: 2rem 1.2rem;
     min-height: 100svh;
   }
 
   .hero .label {
-    font-size: .75rem;
+    font-size: .72rem;
     letter-spacing: .2em;
   }
 
   .hero .date {
-    font-size: .85rem;
-    letter-spacing: .05em;
+    font-size: .82rem;
+    letter-spacing: .04em;
   }
 
   .counter {
-    font-size: .8rem;
+    font-size: .78rem;
   }
 
-  section {
-    padding: 3rem 1.2rem;
+  /* ── FRASES ── */
+  .frases-stage {
+    min-height: 150px;
   }
 
-  section h2 {
-    font-size: 1.4rem;
-    margin-bottom: 1.8rem;
+  .frase-card {
+    padding: 1.8rem 1.2rem;
+  }
+
+  .frase-card .comilla {
+    font-size: 3.5rem;
   }
 
   .frase-card p {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
 
-  .frases-stage {
-    min-height: 160px;
+  /* ── CARRUSEL ── */
+  .carousel-wrap {
+    padding: 0;
   }
 
-  .frase-dots {
-    margin-top: 1rem;
+  .carousel {
+    aspect-ratio: 1/1;
+    border-radius: 12px;
   }
 
+  .carousel .slide img {
+    border-radius: 12px;
+  }
+
+  /* Botones dentro del carrusel en móvil */
+  .c-btn {
+    width: 36px;
+    height: 36px;
+    font-size: .95rem;
+    background: #d966a070;
+    z-index: 3;
+  }
+
+  .c-btn.prev { left: 8px; }
+  .c-btn.next { right: 8px; }
+
+  /* ── CARTA ── */
   .envelope-card {
-    min-height: 260px;
+    min-height: 280px;
   }
 
+  .env-front,
+  .env-back {
+    padding: 1.8rem 1.2rem;
+  }
+
+  .env-icon {
+    font-size: 3rem;
+  }
+
+  .env-back p {
+    font-size: .85rem;
+  }
+
+  /* ── MAPA ── */
   #map {
-    height: 280px;
+    height: 260px;
+    border-radius: 12px;
+  }
+
+  /* ── RAZONES ── */
+  .razon-item {
+    font-size: .9rem;
+    padding: .8rem 1rem;
+  }
+
+  .razon-btn {
+    font-size: .88rem;
+    padding: .6rem 1.4rem;
+  }
+
+  /* ── QUIZ ── */
+  .quiz-q {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
   }
 
   .quiz-opts {
     grid-template-columns: 1fr;
+    gap: .6rem;
   }
 
-  .quiz-q {
-    font-size: 1.05rem;
+  .quiz-opt {
+    font-size: .88rem;
+    padding: .75rem .8rem;
   }
 
-  /* Los botones del carrusel van dentro para no salirse de pantalla */
-  .c-btn.prev { left: 6px; }
-  .c-btn.next { right: 6px; }
+  .quiz-score {
+    font-size: 2.8rem;
+  }
 
-  .c-btn {
-    width: 36px; height: 36px;
+  .quiz-msg {
     font-size: 1rem;
-    background: #d966a066;
   }
 
-  /* Carrusel en formato vertical en móvil */
-  .carousel {
-    aspect-ratio: 3/4;
-    border-radius: 14px;
+  /* ── JUEGO ── */
+  .game-hud {
+    font-size: 1rem;
   }
 
-  .carousel .slide img {
-    border-radius: 14px;
+  .game-btn {
+    font-size: .9rem;
+    padding: .6rem 1.5rem;
   }
 
+  .game-msg {
+    font-size: .85rem;
+  }
+
+  /* ── FOOTER ── */
   footer {
     padding: 2rem 1rem;
     font-size: .75rem;
