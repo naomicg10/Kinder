@@ -273,12 +273,12 @@
   const PREGUNTAS = [
     { q: '¿Cuándo fue nuestro primer día juntos?',
       opts: ['28 julio 2024', '28 agosto 2024', '14 febrero 2024', '1 enero 2025'], ans: 1 },
-    { q: '¿Cuál es mi mote?',
-      opts: ['Pepe', 'Lolo', 'Tete', 'Coco'], ans: 2 },
+    { q: '¿Donde fue nuestro primer beso?',
+      opts: ['En el coche', 'En la Caseta de feria Lombok', 'En la Caseta de feria La Pija', 'En la playa'], ans: 2 },
     { q: '¿A qué ciudad europea hemos viajado juntos?',
       opts: ['París', 'Roma', 'Berlín', 'Viena'], ans: 3 },
     { q: 'Completa: "En Bali..."',
-      opts: ['qué bonito', 'todo Baliii', 'siempre', 'nos perdimos'], ans: 1 },
+      opts: ['todo valee', 'todo Baliii', 'siempre', 'nos perdimos'], ans: 1 },
     { q: '¿En qué ciudad andaluza hemos estado juntos?',
       opts: ['Sevilla', 'Granada', 'Cádiz', 'Málaga'], ans: 2 },
   ];
@@ -321,7 +321,7 @@
     document.getElementById('quiz-card').style.display = 'none';
     const r = document.getElementById('quiz-result');
     r.style.display = 'block';
-    const msgs = ['¡Tenemos que conocernos mejor! 😅', '¡Algo sabemos! 💕', '¡Nos conocemos bastante! ❤', '¡Casi perfectos! 🥰', '¡PERFECTOS! ❤❤❤'];
+    const msgs = ['¡Tenemos que conocernos mejor! 😅', '¡Algo sabemos! 💕', '¡Nos conocemos bastante! ❤', '¡Casi perfectos! 🥰', '¡Casi perfectos! 🥰', '¡PERFECTOS! ❤❤❤'];
     r.innerHTML = `
       <p class="quiz-score">${qScore}/${PREGUNTAS.length}</p>
       <p class="quiz-msg">${msgs[qScore]}</p>
