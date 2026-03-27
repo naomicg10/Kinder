@@ -506,6 +506,138 @@ section h2 {
   min-height: 1.4rem;
 }
 
+/* ── LOGIN ── */
+.lock-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at center, #2a0030 0%, #0d0010 70%);
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.lock-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 16px #d966a0);
+  transition: transform .4s ease;
+}
+
+.lock-icon.open {
+  transform: rotate(-15deg);
+  filter: drop-shadow(0 0 24px #ff85b3);
+}
+
+.lock-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: #c084a8;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+.code-display {
+  display: flex;
+  gap: .6rem;
+  margin-bottom: 2rem;
+}
+
+.code-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #5a1a40;
+  background: transparent;
+  transition: background .2s, border-color .2s, box-shadow .2s;
+}
+
+.code-dot.filled {
+  background: #d966a0;
+  border-color: #d966a0;
+  box-shadow: 0 0 10px #d966a080;
+}
+
+.code-dot.error {
+  background: #e05050;
+  border-color: #e05050;
+  box-shadow: 0 0 10px #e0505080;
+  animation: shake .4s ease;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .75rem;
+  max-width: 260px;
+  width: 100%;
+}
+
+.key {
+  background: linear-gradient(135deg, #1a0020, #200028);
+  border: 1px solid #5a1a40;
+  border-radius: 14px;
+  color: #f0d9e8;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  padding: 1.1rem;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, transform .1s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.key:active,
+.key.pressed {
+  background: #3a0048;
+  border-color: #d966a0;
+  transform: scale(.93);
+}
+
+.key.del {
+  font-size: 1.1rem;
+  color: #c084a8;
+}
+
+.key.zero {
+  grid-column: 2;
+}
+
+.lock-msg {
+  margin-top: 1.8rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #d966a0;
+  letter-spacing: .05em;
+  min-height: 1.4rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.lock-msg.visible { opacity: 1; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+@keyframes unlockPulse {
+  0%   { box-shadow: 0 0 0 0 #d966a060; }
+  70%  { box-shadow: 0 0 0 20px #d966a000; }
+  100% { box-shadow: 0 0 0 0 #d966a000; }
+}
+
+.code-display.success .code-dot {
+  animation: unlockPulse .6s ease forwards;
+}
+
 /* ── FOOTER ── */
 footer {
   position: relative;

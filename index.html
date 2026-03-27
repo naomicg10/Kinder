@@ -3,450 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Para ti, Tete ❤</title>
+  <title>Acceso privado ❤</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
 
 <canvas id="hearts-canvas"></canvas>
 
-<!-- HERO -->
-<div class="hero">
-  <p class="label fade-up">Para siempre contigo</p>
-  <h1 class="fade-up delay-1">Tete ❤</h1>
-  <p class="date fade-up delay-2">Juntos desde el 28 de agosto de 2024</p>
-  <p class="counter fade-up delay-3" id="counter">Calculando...</p>
-  <p class="scroll-hint">&#8595; sigue leyendo</p>
+<div class="lock-screen">
+  <div class="lock-icon" id="lock-icon">🔒</div>
+  <p class="lock-title">Acceso privado</p>
+
+  <div class="code-display" id="code-display">
+    <div class="code-dot"></div>
+    <div class="code-dot"></div>
+    <div class="code-dot"></div>
+    <div class="code-dot"></div>
+  </div>
+
+  <div class="keypad">
+    <button class="key" onclick="press('1')">1</button>
+    <button class="key" onclick="press('2')">2</button>
+    <button class="key" onclick="press('3')">3</button>
+    <button class="key" onclick="press('4')">4</button>
+    <button class="key" onclick="press('5')">5</button>
+    <button class="key" onclick="press('6')">6</button>
+    <button class="key" onclick="press('7')">7</button>
+    <button class="key" onclick="press('8')">8</button>
+    <button class="key" onclick="press('9')">9</button>
+    <button class="key del" onclick="del()">⌫</button>
+    <button class="key zero" onclick="press('0')">0</button>
+  </div>
+
+  <p class="lock-msg" id="lock-msg"></p>
 </div>
 
-<!-- FRASES -->
-<section>
-  <h2>Lo nuestro, en palabras</h2>
-  <div class="frases-stage">
-    <div class="frase-card active">
-      <span class="comilla">"</span>
-      <p>En Baliii, todo Baliii</p>
-    </div>
-    <div class="frase-card">
-      <span class="comilla">"</span>
-      <p>Dammm</p>
-    </div>
-    <div class="frase-card">
-      <span class="comilla">"</span>
-      <p>God damn iiit</p>
-    </div>
-    <div class="frase-card">
-      <span class="comilla">"</span>
-      <p>Siiiuuu</p>
-    </div>
-    <div class="frase-card">
-      <span class="comilla">"</span>
-      <p>LeroLoreLoreee</p>
-    </div>
-    <div class="frase-card">
-      <span class="comilla">"</span>
-      <p>Un valo?</p>
-    </div>
-  </div>
-  <div class="frase-dots" id="frase-dots"></div>
-</section>
-
-<!-- CARRUSEL -->
-<section>
-  <h2>Nosotros</h2>
-  <div class="carousel-wrap">
-    <button class="c-btn prev" onclick="move(-1)">&#8592;</button>
-    <div class="carousel" id="carousel">
-      <div class="slide active"><img src="images/foto1.jpg" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'><span>📷</span>Añade foto1.jpg<br>en la carpeta images/</div>'" alt="Foto 1"></div>
-      <div class="slide"><img src="images/foto2.jpg" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'><span>📷</span>Añade foto2.jpg<br>en la carpeta images/</div>'" alt="Foto 2"></div>
-      <div class="slide"><img src="images/foto3.jpg" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'><span>📷</span>Añade foto3.jpg<br>en la carpeta images/</div>'" alt="Foto 3"></div>
-      <div class="slide"><img src="images/foto4.jpg" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'><span>📷</span>Añade foto4.jpg<br>en la carpeta images/</div>'" alt="Foto 4"></div>
-      <div class="slide"><img src="images/foto5.jpg" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'><span>📷</span>Añade foto5.jpg<br>en la carpeta images/</div>'" alt="Foto 5"></div>
-      <div class="slide"><img src="images/foto6.jpg" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'><span>📷</span>Añade foto6.jpg<br>en la carpeta images/</div>'" alt="Foto 6"></div>
-    </div>
-    <button class="c-btn next" onclick="move(1)">&#8594;</button>
-  </div>
-  <div class="dots" id="dots"></div>
-</section>
-
-<!-- CARTA DE AMOR -->
-<section>
-  <h2>Una carta para ti</h2>
-  <div class="envelope-wrap">
-    <div class="envelope-card" id="env-card">
-      <div class="env-front" onclick="openEnvelope()">
-        <div class="env-icon">&#9993;</div>
-        <p class="env-hint">Toca para abrir ❤</p>
-        <div class="env-deco"></div>
-      </div>
-      <div class="env-back">
-        <p class="letter-saludo">Tete,</p>
-        <p>Hoy se cumple un año y siete meses de aquella noche en que todo cambió. Un año de risas, de "siiiuuu", de "god damn iiit", de planes locos y de querernos a nuestra manera.</p>
-        <p>No tengo palabras suficientes para decirte lo mucho que significas para mí. Solo sé que con cada día que pasa, más segura estoy de haberte elegido a ti.</p>
-        <p>Gracias por ser mi calma, mi alegría, mi Bali particular.</p>
-        <p>Feliz aniversario, amor mío.</p>
-        <p class="letter-firma">Tuya, siempre ❤</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MAPA -->
-<section>
-  <h2>Nuestros lugares</h2>
-  <div id="map"></div>
-</section>
-
-<!-- RAZONES -->
-<section>
-  <h2>Por qué te quiero</h2>
-  <div class="razones-wrap">
-    <ul class="razones-list" id="razones-list"></ul>
-    <button class="razon-btn" id="razon-btn" onclick="mostrarRazon()">Descubrir una razón ❤</button>
-  </div>
-</section>
-
-<!-- QUIZ -->
-<section>
-  <h2>¿Nos conocemos?</h2>
-  <div class="quiz-wrap">
-    <div id="quiz-card">
-      <p class="quiz-num" id="quiz-num">Pregunta 1 de 5</p>
-      <p class="quiz-q" id="quiz-q"></p>
-      <div class="quiz-opts" id="quiz-opts"></div>
-    </div>
-    <div class="quiz-result" id="quiz-result" style="display:none"></div>
-  </div>
-</section>
-
-<!-- MINI JUEGO -->
-<section>
-  <h2>Atrapa los corazones</h2>
-  <div class="game-wrap">
-    <div class="game-hud">
-      <span>❤ <span id="g-score">0</span></span>
-      <span id="g-timer">30s</span>
-    </div>
-    <canvas id="game-canvas"></canvas>
-    <button class="game-btn" id="game-btn" onclick="startGame()">¡Jugar!</button>
-    <p class="game-msg" id="game-msg"></p>
-  </div>
-</section>
-
-<footer>Hecho con todo mi amor &nbsp;❤&nbsp; para Jose Luis</footer>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-  // ── CONTADOR ──
-  (function () {
-    const start = new Date('2024-08-28T23:30:00');
-    function update() {
-      const now  = new Date();
-      const diff = now - start;
-      const days  = Math.floor(diff / 864e5);
-      const hours = Math.floor((diff % 864e5) / 36e5);
-      const mins  = Math.floor((diff % 36e5)  / 6e4);
-      const secs  = Math.floor((diff % 6e4)   / 1e3);
-      document.getElementById('counter').textContent =
-        `${days} días, ${hours}h ${mins}m ${secs}s juntos`;
-    }
-    update();
-    setInterval(update, 1000);
-  })();
+  const CODE    = '2808';
+  let   entered = '';
+  let   locked  = false;
 
-  // ── CARRUSEL ──
-  const slides = document.querySelectorAll('.slide');
-  const dotsEl = document.getElementById('dots');
-  let cur = 0, timer;
+  const dots    = document.querySelectorAll('.code-dot');
+  const display = document.getElementById('code-display');
+  const msg     = document.getElementById('lock-msg');
+  const icon    = document.getElementById('lock-icon');
 
-  slides.forEach((_, i) => {
-    const d = document.createElement('span');
-    d.className = 'dot' + (i === 0 ? ' active' : '');
-    d.onclick = () => go(i);
-    dotsEl.appendChild(d);
-  });
-
-  function go(n) {
-    slides[cur].classList.remove('active');
-    dotsEl.children[cur].classList.remove('active');
-    cur = (n + slides.length) % slides.length;
-    slides[cur].classList.add('active');
-    dotsEl.children[cur].classList.add('active');
-    resetTimer();
-  }
-  function move(dir) { go(cur + dir); }
-  function resetTimer() {
-    clearInterval(timer);
-    timer = setInterval(() => move(1), 4000);
-  }
-  resetTimer();
-
-  let touchStartX = 0;
-  document.getElementById('carousel').addEventListener('touchstart', e => {
-    touchStartX = e.touches[0].clientX;
-  }, { passive: true });
-  document.getElementById('carousel').addEventListener('touchend', e => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) move(diff > 0 ? 1 : -1);
-  }, { passive: true });
-
-  // ── FRASES ──
-  (function () {
-    const cards = document.querySelectorAll('.frase-card');
-    const dotsW = document.getElementById('frase-dots');
-    let fi = 0;
-    cards.forEach((_, i) => {
-      const d = document.createElement('span');
-      d.className = 'fdot' + (i === 0 ? ' active' : '');
-      d.onclick = () => goFrase(i);
-      dotsW.appendChild(d);
+  function updateDots() {
+    dots.forEach((d, i) => {
+      d.classList.toggle('filled', i < entered.length);
+      d.classList.remove('error');
     });
-    function goFrase(n) {
-      cards[fi].classList.remove('active');
-      dotsW.children[fi].classList.remove('active');
-      fi = (n + cards.length) % cards.length;
-      cards[fi].classList.add('active');
-      dotsW.children[fi].classList.add('active');
-    }
-    setInterval(() => goFrase(fi + 1), 3000);
-  })();
-
-  // ── CARTA ──
-  function openEnvelope() {
-    document.getElementById('env-card').classList.add('open');
   }
 
-  // ── MAPA ──
-  const map = L.map('map', { zoomControl: true, tap: false }).setView([44, 5], 4);
-  setTimeout(() => map.invalidateSize(), 300);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; CartoDB',
-    maxZoom: 18
-  }).addTo(map);
+  function showMsg(text) {
+    msg.textContent = text;
+    msg.classList.add('visible');
+  }
 
-  const heartIcon = L.divIcon({
-    className: '',
-    html: '<div style="font-size:1.8rem;filter:drop-shadow(0 0 6px #d966a0)">❤</div>',
-    iconSize: [30, 30],
-    iconAnchor: [15, 15]
-  });
+  function press(digit) {
+    if (locked || entered.length >= 4) return;
+    entered += digit;
+    updateDots();
+    if (entered.length === 4) check();
+  }
 
-  L.marker([36.5271, -6.2886], { icon: heartIcon })
-    .addTo(map)
-    .bindPopup('<b style="color:#d966a0">Cádiz</b><br>Nuestro rincón del sur ❤');
+  function del() {
+    if (locked) return;
+    entered = entered.slice(0, -1);
+    updateDots();
+    msg.classList.remove('visible');
+  }
 
-  L.marker([48.2082, 16.3738], { icon: heartIcon })
-    .addTo(map)
-    .bindPopup('<b style="color:#d966a0">Viena</b><br>Nuestra aventura europea ❤');
-
-  // ── RAZONES ──
-  const RAZONES = [
-    'Tu forma de reírte cuando algo te hace gracia de verdad',
-    'El "siiiuuu" que sueltas cuando estás contento',
-    'Cómo me miras cuando crees que no me doy cuenta',
-    'Que seas tan tú en todo momento, sin filtros',
-    'Tu "dammm" que me hace sonreír siempre',
-    'La forma en que me cuidas sin hacer ruido',
-    'Que el mundo contigo tenga más colores',
-    'Tu energía, que se contagia sin querer',
-    'Que me hayas elegido a mí',
-    'Porque junto a ti me siento en casa',
-  ];
-  let rIdx = 0;
-
-  function mostrarRazon() {
-    if (rIdx >= RAZONES.length) return;
-    const li = document.createElement('li');
-    li.className = 'razon-item';
-    li.textContent = RAZONES[rIdx++];
-    document.getElementById('razones-list').appendChild(li);
-    setTimeout(() => li.classList.add('visible'), 20);
-    if (rIdx >= RAZONES.length) {
-      const btn = document.getElementById('razon-btn');
-      btn.textContent = '¡Ya las has leído todas! ❤';
-      btn.disabled = true;
+  function check() {
+    locked = true;
+    if (entered === CODE) {
+      // ── CORRECTO ──
+      display.classList.add('success');
+      icon.textContent  = '🔓';
+      icon.classList.add('open');
+      showMsg('¡Bienvenido, Tete! ❤');
+      setTimeout(() => {
+        window.location.href = 'main.html';
+      }, 1400);
+    } else {
+      // ── INCORRECTO ──
+      dots.forEach(d => d.classList.add('error'));
+      showMsg('Código incorrecto 💔');
+      setTimeout(() => {
+        entered = '';
+        locked  = false;
+        updateDots();
+        msg.classList.remove('visible');
+      }, 900);
     }
   }
 
-  // ── QUIZ ──
-  const PREGUNTAS = [
-    { q: '¿Cuándo fue nuestro primer día juntos?',
-      opts: ['28 julio 2024', '28 agosto 2024', '14 febrero 2024', '1 enero 2025'], ans: 1 },
-    { q: '¿Donde fue nuestro primer beso?',
-      opts: ['En el coche', 'En la Caseta de feria Lombok', 'En la Caseta de feria La Pija', 'En la playa'], ans: 2 },
-    { q: '¿A qué ciudad europea hemos viajado juntos?',
-      opts: ['París', 'Roma', 'Berlín', 'Viena'], ans: 3 },
-    { q: 'Completa: "En Bali..."',
-      opts: ['todo valee', 'todo Baliii', 'siempre', 'nos perdimos'], ans: 1 },
-    { q: '¿En qué ciudad andaluza hemos estado juntos?',
-      opts: ['Sevilla', 'Granada', 'Cádiz', 'Málaga'], ans: 2 },
-  ];
-  let qIdx = 0, qScore = 0, answered = false;
-
-  function renderPregunta() {
-    const p = PREGUNTAS[qIdx];
-    document.getElementById('quiz-num').textContent = `Pregunta ${qIdx + 1} de ${PREGUNTAS.length}`;
-    document.getElementById('quiz-q').textContent = p.q;
-    const optsEl = document.getElementById('quiz-opts');
-    optsEl.innerHTML = '';
-    p.opts.forEach((o, i) => {
-      const btn = document.createElement('button');
-      btn.className = 'quiz-opt';
-      btn.textContent = o;
-      btn.onclick = () => answerQ(i);
-      optsEl.appendChild(btn);
-    });
-    answered = false;
-  }
-
-  function answerQ(i) {
-    if (answered) return;
-    answered = true;
-    const p = PREGUNTAS[qIdx];
-    document.querySelectorAll('.quiz-opt').forEach((b, idx) => {
-      b.disabled = true;
-      if (idx === p.ans) b.classList.add('correct');
-      else if (idx === i) b.classList.add('wrong');
-    });
-    if (i === p.ans) qScore++;
-    setTimeout(() => {
-      qIdx++;
-      if (qIdx < PREGUNTAS.length) renderPregunta();
-      else showResult();
-    }, 1200);
-  }
-
-  function showResult() {
-    document.getElementById('quiz-card').style.display = 'none';
-    const r = document.getElementById('quiz-result');
-    r.style.display = 'block';
-    const msgs = ['¡Tenemos que conocernos mejor! 😅', '¡Algo sabemos! 💕', '¡Nos conocemos bastante! ❤', '¡Casi perfectos! 🥰', '¡Casi perfectos! 🥰', '¡PERFECTOS! ❤❤❤'];
-    r.innerHTML = `
-      <p class="quiz-score">${qScore}/${PREGUNTAS.length}</p>
-      <p class="quiz-msg">${msgs[qScore]}</p>
-      <button class="quiz-opt" onclick="resetQuiz()">Repetir ❤</button>
-    `;
-  }
-
-  function resetQuiz() {
-    qIdx = 0; qScore = 0;
-    document.getElementById('quiz-card').style.display = 'block';
-    document.getElementById('quiz-result').style.display = 'none';
-    renderPregunta();
-  }
-
-  renderPregunta();
-
-  // ── MINI JUEGO ──
-  const gc  = document.getElementById('game-canvas');
-  const gctx = gc.getContext('2d');
-  let gameRunning = false, gScore = 0, gTime = 30;
-  let gHearts = [], gInterval, gSpawn;
-  const catcher = { w: 64, h: 18, x: 0 };
-
-  function resizeGame() {
-    gc.width  = Math.min(gc.parentElement.clientWidth - 2, 480);
-    gc.height = 300;
-    catcher.x = gc.width / 2 - catcher.w / 2;
-  }
-  resizeGame();
-  window.addEventListener('resize', resizeGame);
-
-  gc.addEventListener('mousemove', e => {
-    const r = gc.getBoundingClientRect();
-    catcher.x = e.clientX - r.left - catcher.w / 2;
+  // Soporte teclado físico
+  document.addEventListener('keydown', e => {
+    if (e.key >= '0' && e.key <= '9') press(e.key);
+    if (e.key === 'Backspace') del();
   });
-  gc.addEventListener('touchmove', e => {
-    e.preventDefault();
-    const r = gc.getBoundingClientRect();
-    catcher.x = e.touches[0].clientX - r.left - catcher.w / 2;
-  }, { passive: false });
-
-  function drawGameHeart(x, y, size, color) {
-    gctx.save();
-    gctx.fillStyle = color;
-    gctx.translate(x, y);
-    gctx.scale(size / 10, size / 10);
-    gctx.beginPath();
-    gctx.moveTo(0, -3);
-    gctx.bezierCurveTo(-5, -8, -10, -3, 0, 4);
-    gctx.bezierCurveTo(10, -3, 5, -8, 0, -3);
-    gctx.fill();
-    gctx.restore();
-  }
-
-  function startGame() {
-    if (gameRunning) return;
-    gameRunning = true; gScore = 0; gTime = 30; gHearts = [];
-    document.getElementById('game-btn').style.display = 'none';
-    document.getElementById('game-msg').textContent = '';
-    document.getElementById('g-score').textContent = 0;
-    document.getElementById('g-timer').textContent = '30s';
-
-    gSpawn = setInterval(() => {
-      gHearts.push({
-        x: 16 + Math.random() * (gc.width - 32),
-        y: -16,
-        speed: 1.8 + Math.random() * 2.2,
-        size: 10 + Math.random() * 10,
-        color: Math.random() > .5 ? '#d966a0' : '#ff85b3'
-      });
-    }, 650);
-
-    gInterval = setInterval(() => {
-      gTime--;
-      document.getElementById('g-timer').textContent = gTime + 's';
-      if (gTime <= 0) endGame();
-    }, 1000);
-
-    requestAnimationFrame(gameLoop);
-  }
-
-  function gameLoop() {
-    if (!gameRunning) return;
-    gctx.clearRect(0, 0, gc.width, gc.height);
-
-    const cx = Math.max(0, Math.min(gc.width - catcher.w, catcher.x));
-    const cy = gc.height - 30;
-
-    // draw catcher
-    gctx.fillStyle = '#d966a0cc';
-    gctx.beginPath();
-    gctx.roundRect(cx, cy, catcher.w, catcher.h, 9);
-    gctx.fill();
-    gctx.fillStyle = '#fff';
-    gctx.font = '13px serif';
-    gctx.textAlign = 'center';
-    gctx.fillText('❤', cx + catcher.w / 2, cy + 13);
-
-    // hearts
-    gHearts = gHearts.filter(h => {
-      h.y += h.speed;
-      if (h.y + h.size > cy && h.y < cy + catcher.h &&
-          h.x > cx && h.x < cx + catcher.w) {
-        gScore++;
-        document.getElementById('g-score').textContent = gScore;
-        return false;
-      }
-      if (h.y > gc.height + 20) return false;
-      drawGameHeart(h.x, h.y, h.size, h.color);
-      return true;
-    });
-
-    requestAnimationFrame(gameLoop);
-  }
-
-  function endGame() {
-    gameRunning = false;
-    clearInterval(gInterval);
-    clearInterval(gSpawn);
-    const btn = document.getElementById('game-btn');
-    btn.style.display = 'inline-block';
-    btn.textContent = 'Otra vez ❤';
-    const msg = gScore < 5 ? '¡Sigue practicando! 😅' : gScore < 15 ? '¡Nada mal! 💕' : '¡Eres increíble! ❤❤❤';
-    document.getElementById('game-msg').textContent = `${gScore} corazones atrapados — ${msg}`;
-  }
 
   // ── CORAZONES FONDO ──
   const canvas = document.getElementById('hearts-canvas');
@@ -462,19 +118,19 @@
 
   function Heart() { this.reset(); }
   Heart.prototype.reset = function () {
-    this.x    = Math.random() * canvas.width;
-    this.y    = canvas.height + 20;
-    this.size = 8 + Math.random() * 14;
-    this.speed= .4 + Math.random() * .8;
-    this.alpha= .15 + Math.random() * .35;
-    this.drift= (Math.random() - .5) * .4;
-    this.sway = 0;
+    this.x         = Math.random() * canvas.width;
+    this.y         = canvas.height + 20;
+    this.size      = 8 + Math.random() * 14;
+    this.speed     = .4 + Math.random() * .8;
+    this.alpha     = .15 + Math.random() * .35;
+    this.drift     = (Math.random() - .5) * .4;
+    this.sway      = 0;
     this.swaySpeed = .01 + Math.random() * .02;
   };
   Heart.prototype.update = function () {
     this.sway += this.swaySpeed;
-    this.x += Math.sin(this.sway) * this.drift * 2;
-    this.y -= this.speed;
+    this.x    += Math.sin(this.sway) * this.drift * 2;
+    this.y    -= this.speed;
     if (this.y < -20) this.reset();
   };
   Heart.prototype.draw = function () {
@@ -497,12 +153,11 @@
     hearts.push(h);
   }
 
-  function loop() {
+  (function loop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     hearts.forEach(h => { h.update(); h.draw(); });
     requestAnimationFrame(loop);
-  }
-  loop();
+  })();
 </script>
 </body>
 </html>
